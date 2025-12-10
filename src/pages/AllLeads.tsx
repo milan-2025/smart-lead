@@ -37,6 +37,7 @@ const AllLeads: React.FC = () => {
           <FilterDropdown
             filterValue={filterValue}
             setFilterValue={setFilterValue}
+            setPage={setPage}
           />
         </div>
         <div className="mt-7 md:w-2/3 w-full rounded-xl border p-2 shadow-xl">

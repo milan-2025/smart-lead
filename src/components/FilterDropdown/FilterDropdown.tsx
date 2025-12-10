@@ -11,7 +11,8 @@ import { Button } from "../ui/button";
 const FilterDropdown: React.FC<{
   filterValue: string;
   setFilterValue: (state: string) => void;
-}> = ({ filterValue, setFilterValue }) => {
+  setPage: (state: number) => void;
+}> = ({ filterValue, setFilterValue, setPage }) => {
   return (
     <>
       <DropdownMenu>
@@ -31,6 +32,7 @@ const FilterDropdown: React.FC<{
             }
             onClick={() => {
               setFilterValue("All");
+              setPage(1);
             }}
           >
             All
@@ -43,6 +45,7 @@ const FilterDropdown: React.FC<{
             }
             onClick={() => {
               setFilterValue("Verified");
+              setPage(1);
             }}
           >
             Verified
@@ -55,6 +58,7 @@ const FilterDropdown: React.FC<{
             }
             onClick={() => {
               setFilterValue("To Check");
+              setPage(1);
             }}
           >
             To Check
