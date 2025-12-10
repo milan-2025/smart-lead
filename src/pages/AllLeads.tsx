@@ -5,6 +5,7 @@ import LoadingScreen from "@/components/LodingSccreen/LoadingScreen";
 import { useGetAllLeadsQuery } from "@/services/queries";
 // import { Container } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const AllLeads: React.FC = () => {
   const [page, setPage] = useState(1);
@@ -13,12 +14,15 @@ const AllLeads: React.FC = () => {
   const [filterValue, setFilterValue] = useState("All");
   const getAllLeadsQuery = useGetAllLeadsQuery(page, limit, filterValue);
 
-  if (getAllLeadsQuery.isLoading) {
-    return <>Loading....</>;
-  }
-
   if (getAllLeadsQuery.isError) {
-    return <>Error while getting leads.</>;
+    console.log("error while getting leads---", getAllLeadsQuery.error);
+
+    toast.error("Some error while getting leads.", {
+      classNames: {
+        toast: "!bg-red-400 !text-neutral-100 !border-0",
+      },
+      position: "top-right",
+    });
   }
 
   if (getAllLeadsQuery.data) {
@@ -36,12 +40,17 @@ const AllLeads: React.FC = () => {
           />
         </div>
         <div className="mt-7 md:w-2/3 w-full rounded-xl border p-2 shadow-xl">
-          {getAllLeadsQuery.data && (
+          {getAllLeadsQuery.data && getAllLeadsQuery.data.leads.length > 0 && (
             <LeadsTable
               page={page}
               setPage={setPage}
               data={getAllLeadsQuery.data}
             />
+          )}
+          {getAllLeadsQuery.data && getAllLeadsQuery.data.leads.length == 0 && (
+            <h2 className="text-lg text-neutral-600">
+              No leads to Show, add some first.
+            </h2>
           )}
         </div>
       </div>

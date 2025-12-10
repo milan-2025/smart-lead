@@ -1,6 +1,9 @@
 // import logo from "../../assets/greenlead-logo.png";
 
+import { MenuIcon } from "lucide-react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import NavbarDrawer from "./NavbarDrawer";
 
 const Navbar: React.FC = () => {
   const links = [
@@ -13,19 +16,26 @@ const Navbar: React.FC = () => {
       link: "/all-leads",
     },
   ];
+
+  const [openNavbar, setIsOpenNavbar] = useState(false);
+  const handleClose = () => {
+    setIsOpenNavbar(false);
+  };
   return (
     <>
       <nav className="flex w-full bg-bg-navbar py-3 justify-center">
         <div className="flex md:w-10/12 w-11/12 justify-between">
           {/* <img src={logo} alt="logo" id="logo" /> */}
           <h1 className="text-lg">Smart Lead</h1>
-          <ul className="flex space-x-8 text-text-navbar font-medium">
-            {/* <li className="active-link cursor-pointer">Home</li>
-            <li>Features</li>
-            <li>How it Works?</li>
-            <li>Get Started</li>
-            <li>Contact</li> */}
-            {links.map((link, index) => {
+          <MenuIcon
+            onClick={() => {
+              setIsOpenNavbar(true);
+            }}
+            // color="#99a1af"
+            className="cursor-pointer md:hidden"
+          />
+          <ul className="md:flex space-x-8 hidden text-text-navbar font-medium">
+            {links.map((link) => {
               return (
                 <NavLink
                   to={link.link}
@@ -43,6 +53,12 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
       </nav>
+      <NavbarDrawer
+        isOpen={openNavbar}
+        setIsOpen={setIsOpenNavbar}
+        handleClose={handleClose}
+        links={links}
+      />
     </>
   );
 };

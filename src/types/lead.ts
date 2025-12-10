@@ -3,6 +3,8 @@ export interface Lead {
   country: string;
   status: "Verified" | "To Check";
   probability: number;
+  createdAt: string;
+  _id: string;
 }
 
 export interface getLeadsResponse {

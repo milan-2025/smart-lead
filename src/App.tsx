@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./components/RootLayout/RootLayout";
-import SendBatchList from "./pages/SendBatchList";
+
 import AllLeads from "./pages/AllLeads";
+import AddLeads from "./pages/AddLeads";
 
 function App() {
   const router = createBrowserRouter([
@@ -11,7 +12,7 @@ function App() {
       children: [
         {
           index: true,
-          element: <SendBatchList />,
+          element: <AddLeads />,
         },
         {
           path: "all-leads",

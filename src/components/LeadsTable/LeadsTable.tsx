@@ -11,6 +11,7 @@ import {
 import type { getLeadsResponse } from "@/types/lead";
 import { Button } from "../ui/button";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import { formatUtcToReadableTime } from "@/util/helpers";
 
 const LeadsTable: React.FC<{
   data: getLeadsResponse;
@@ -50,6 +51,7 @@ const LeadsTable: React.FC<{
             <TableHead>Country</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Probability (score)</TableHead>
+            <TableHead>Created At</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -60,13 +62,14 @@ const LeadsTable: React.FC<{
                 <TableCell>{lead.country}</TableCell>
                 <TableCell>{lead.status}</TableCell>
                 <TableCell>{lead.probability}</TableCell>
+                <TableCell>{formatUtcToReadableTime(lead.createdAt)}</TableCell>
               </TableRow>
             );
           })}
         </TableBody>
         <TableFooter className="mt-2">
           <TableRow>
-            <TableCell colSpan={2}>{`Showing ${calculateLowerIndex(
+            <TableCell colSpan={3}>{`Showing ${calculateLowerIndex(
               data.page,
               data.limit
             )} - ${calculateUpperIndex(data.page, data.limit)} of total ${

@@ -1,7 +1,6 @@
 import { useVerifyAddLeadsMutate } from "@/services/mutations";
-import Container from "../components/Container/Container";
-import { useState } from "react";
 import LoadingScreen from "@/components/LodingSccreen/LoadingScreen";
+import { useState } from "react";
 const SendBatchList: React.FC = () => {
   const [namesString, setNamesString] = useState("");
 
@@ -37,7 +36,7 @@ const SendBatchList: React.FC = () => {
     }
   };
   return (
-    <Container>
+    <>
       {verifyAddLeadsMutation.isPending && <LoadingScreen />}
       <div className="w-full flex justify-center">
         <div className="mt-8 bg-bg-navbar p-4 flex flex-col w-full md:w-2/3 rounded-2xl  shadow-xl">
@@ -52,14 +51,14 @@ const SendBatchList: React.FC = () => {
             rows={5}
           ></textarea>
           <button
-            className="mt-3 ml-auto bg-green-400 text-white p-2 rounded hover:bg-green-400/80 cursor-pointer"
+            className="mt-3 ml-auto bg-emerald-400 text-white p-2 rounded hover:bg-emerald-400/80 cursor-pointer"
             onClick={handleNormalizeApi}
           >
-            Send
+            Add Leads
           </button>
         </div>
       </div>
-    </Container>
+    </>
   );
 };
 
