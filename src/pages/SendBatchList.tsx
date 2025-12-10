@@ -1,6 +1,7 @@
 import { useVerifyAddLeadsMutate } from "@/services/mutations";
 import Container from "../components/Container/Container";
 import { useState } from "react";
+import LoadingScreen from "@/components/LodingSccreen/LoadingScreen";
 const SendBatchList: React.FC = () => {
   const [namesString, setNamesString] = useState("");
 
@@ -37,6 +38,7 @@ const SendBatchList: React.FC = () => {
   };
   return (
     <Container>
+      {verifyAddLeadsMutation.isPending && <LoadingScreen />}
       <div className="w-full flex justify-center">
         <div className="mt-8 bg-bg-navbar p-4 flex flex-col w-full md:w-2/3 rounded-2xl  shadow-xl">
           <label>Enter first names seperated by semi-colon (;)</label>

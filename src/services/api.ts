@@ -12,10 +12,15 @@ export const verifyAndAddNames = async (names: string[]) => {
   ).data;
 };
 
-export const getAllLeads = async (page: number, limit: number) => {
-  return (
-    await axiosInstance.get<getLeadsResponse>(
-      `/api/all-leads?page=${page}&limit=${limit}`
-    )
-  ).data;
+export const getAllLeads = async (
+  page: number,
+  limit: number,
+  filterValue: string
+) => {
+  let url = `/api/all-leads?page=${page}&limit=${limit}`;
+  if (filterValue == "All") {
+  } else {
+    url = url + `&filterValue=${filterValue}`;
+  }
+  return (await axiosInstance.get<getLeadsResponse>(url)).data;
 };

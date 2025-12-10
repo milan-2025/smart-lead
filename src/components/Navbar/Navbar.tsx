@@ -1,26 +1,16 @@
 // import logo from "../../assets/greenlead-logo.png";
 
+import { NavLink } from "react-router-dom";
+
 const Navbar: React.FC = () => {
   const links = [
     {
-      label: "Home",
+      label: "Add-leads",
       link: "/",
     },
     {
-      label: "Features",
-      link: "/#Features",
-    },
-    {
-      label: "How it Works ?",
-      link: "/#HowWorks",
-    },
-    {
-      label: "Get Started",
-      link: "/",
-    },
-    {
-      label: "Contact",
-      link: "/#Contact",
+      label: "Leads",
+      link: "/all-leads",
     },
   ];
   return (
@@ -37,14 +27,17 @@ const Navbar: React.FC = () => {
             <li>Contact</li> */}
             {links.map((link, index) => {
               return (
-                <li
+                <NavLink
+                  to={link.link}
                   key={link.label}
-                  className={
-                    index == 0 ? "active-link cursor-pointer" : "cursor-pointer"
-                  }
+                  className={({ isActive }) => {
+                    return isActive
+                      ? "active-link cursor-pointer"
+                      : "cursor-pointer";
+                  }}
                 >
-                  {link.label}
-                </li>
+                  <li>{link.label}</li>
+                </NavLink>
               );
             })}
           </ul>
