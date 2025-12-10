@@ -2,7 +2,8 @@ import type { getLeadsResponse, Lead } from "@/types/lead";
 import axios from "axios";
 
 const localbaseURL = "http://localhost:3000";
-const axiosInstance = axios.create({ baseURL: localbaseURL });
+const remoteBaseURL = "https://smart-lead-backend.onrender.com/";
+const axiosInstance = axios.create({ baseURL: remoteBaseURL });
 
 export const verifyAndAddNames = async (names: string[]) => {
   return (

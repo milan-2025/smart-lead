@@ -1,4 +1,4 @@
-Setup Instructions:- 
+Setup Instructions:-
 
 1. Clone the repository and navigate into project directory
 2. run npm install to install all dependencies
