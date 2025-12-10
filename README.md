@@ -8,6 +8,9 @@ Setup Instructions:-
 Architectural Explanation:-
 
 1.This project uses React and react-router-dom for routing, and tanstack-query for api call management.
+
 2.The api's are defined in services folder all queries are in queries.ts file in services folder and mutations are in mutation.ts
+
 3.It follows Custom hook pattern for data fetching and follows SOLID Principles for components.
+
 4.The app is completely responsive and can be open in any mobile or laptop or tablet.
